@@ -1,0 +1,61 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BoardMember from "../components/BoardMember.astro";
+---
+
+<Layout>
+  <div class="flex flex-col gap-2">
+    <h1 class="font-funnel font-extrabold italic text-9xl">About</h1>
+    <span class="text-2xl text-blue-500 italic">Learn more about the club!</span
+    >
+  </div>
+
+  <div class="space-y-6 text-center w-full bg-gray-300 text-black py-12">
+    <h2 id="mission" class="text-5xl font-arcade">Our Mission</h2>
+    <p class="max-w-3xl text-xl mx-auto">
+      At VGDC, we turn players into creators. We provide a collaborative hub for
+      students of all disciplines to apply their unique skills, build
+      professional portfolios, and develop innovative games. Whether you code,
+      draw, write, or compose, our mission is to help you find your team and
+      create something extraordinary.
+    </p>
+  </div>
+
+  <div class="text-center">
+    <h2 id="board" class="text-5xl font-arcade mb-8 mt-12">Meet the Board</h2>
+
+    <div class="space-y-12">
+      <div class="space-y-6">
+        <h2 class="text-5xl font-jersey">Executive Board</h2>
+        <p class="max-w-2xl text-xl mx-auto">
+          Executive board members oversee all behind-the-scenes club
+          functionalities, such as financing, events coordination, corporate
+          outreach, media management, and project management.
+        </p>
+
+        <div class="grid grid-cols-4 gap-8">
+          <BoardMember name="Emily" />
+          <BoardMember name="Ari" />
+          <BoardMember name="Joel" />
+          <BoardMember name="Angel" />
+        </div>
+      </div>
+
+      <div class="space-y-12">
+        <div class="space-y-6">
+          <h2 class="text-5xl font-jersey">General Board</h2>
+          <p class="max-w-2xl text-xl mx-auto">
+            General board members are responsible for ...
+          </p>
+
+          <div class="grid grid-cols-4 gap-8">
+            <BoardMember name="Emily" />
+            <BoardMember name="Ari" />
+            <BoardMember name="Joel" />
+            <BoardMember name="Angel" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

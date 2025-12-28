@@ -1,9 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import FAQ from "../components/FAQ.astro";
 ---
 
-<Layout>
-  <div class="text-4xl font-arcade">
-    UNDER CONSTRUCTION :)
-  </div>
-</Layout>
+<Layout hasHero={true}>
+  <div class="flex flex-col space-y-32">
+    <div class="grid place-content-center space-y-8">
+      <h1 id="events" class="text-4xl text-center font-arcade">Upcoming Events</h1>
+      <span class="text-xl text-center">Coming soon!</span>
+    </div>
+    <div class="flex flex-row space-x-32">
+      <div class="grid place-content-center">
+        <div class="flex items-center space-x-4">
+          <div class="text-9xl animate-chomp">
+            <i class="fas fa-dice hover:text-yellow-300"></i>
+          </div>
+          <span class="font-arcade leading-tight text-6xl">
+            VGDC<br /><span class="text-blue-500 text-6xl">@CSUF</span>
+          </span>
+        </div>
+      </div>
+      <div>
+        <h1 class="text-4xl mb-6 text-center font-arcade">FAQ<h1></h1></h1>
+        <FAQ />
+      </div>
+    </div>
+  </div></Layout
+>

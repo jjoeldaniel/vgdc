@@ -5,9 +5,10 @@ import Footer from "../components/Footer.astro";
 
 interface Props {
   title?: string;
+  hasHero?: boolean;
 }
 
-const { title = "VGDC at CSUF" } = Astro.props;
+const { title = "VGDC @ CSUF", hasHero = false } = Astro.props;
 ---
 
 <html lang="en">
@@ -24,11 +25,12 @@ const { title = "VGDC at CSUF" } = Astro.props;
       rel="stylesheet"
     />
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Jersey+10&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Jersey+10&family=Press+Start+2P&family=Titan+One&display=swap" rel="stylesheet">
     <title>{title}</title>
   </head>
-  <body class="flex flex-col h-screen justify-between items-center my-6 bg-[#111827] text-white">
-    <Navbar />
-    <slot class="grow" />
+  <body class="flex flex-col space-y-8 items-center mb-6 mt-4 bg-[#111827] text-white">
+    <Navbar {hasHero} />
+    <slot />
     <Footer/>
   </body>
 </html>

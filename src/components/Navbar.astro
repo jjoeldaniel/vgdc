@@ -1,19 +1,43 @@
-<div class="grid grid-cols-4 justify-around gap-4 font-jersey">
+---
+interface Props {
+  hasHero?: boolean;
+  // img path
+  heroPath?: string;
+}
+
+const { hasHero = false, heroPath = "https://placehold.co/700x200" } =
+  Astro.props;
+---
+
+<div class="grid grid-cols-4 mb-4 justify-around gap-4 font-jersey">
   <!-- logo -->
-  <div class="flex items-center">
-    <div class="text-3xl animate-chomp">
-      <i class="fas fa-cookie-bite"></i>
-    </div>
-    <a href="#" class="font-arcade leading-tight">
-      VGDC<br /><span class="text-blue-500 text-xs">@CSUF</span>
-    </a>
-  </div>
+  <a href="/">
+    <div class="flex items-center space-x-2">
+      <div class="text-3xl animate-chomp">
+        <i class="fas fa-dice hover:text-yellow-300"></i>
+      </div>
+      <span class="font-arcade leading-tight">
+        VGDC<br /><span class="text-blue-500 text-xs">@CSUF</span>
+      </span>
+    </div></a
+  >
   <!-- sections -->
   <ul class="flex flex-row place-self-center col-span-2 space-x-14 text-4xl">
-    <li class="align-middle">Projects</li>
-    <li class="align-middle">Events</li>
-    <li class="align-middle">Resources</li>
-    <li class="align-middle">About</li>
+    <li class="align-middle hover:text-blue-500">
+      <a href="https://csufvgdc.itch.io/" target="_blank">Projects</a>
+    </li>
+    <li class="align-middle hover:text-blue-500">Events</li>
+    <li class="align-middle hover:text-blue-500"><a href="/resources">Resources</a></li>
+    <li class="align-middle group">
+      <a href="/about" class="hover:text-blue-500">About</a>
+      <!-- bg is temporary -->
+      <ul class="hidden group-hover:block absolute bg-blue-500 px-2 text-3xl">
+        <li class="hover:text-black">
+          <a href="/about#misson">Our Mission</a>
+        </li>
+        <li class="hover:text-black"><a href="/about#board">Board</a></li>
+      </ul>
+    </li>
   </ul>
   <!-- links -->
   <ul class="flex flex-row place-self-center space-x-6 text-2xl">
@@ -34,3 +58,5 @@
     </li>
   </ul>
 </div>
+
+{hasHero && <img class="w-full" src={heroPath} />}

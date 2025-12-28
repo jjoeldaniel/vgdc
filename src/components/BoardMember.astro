@@ -1,0 +1,20 @@
+---
+interface Props {
+  name: string;
+  position?: string;
+  image_url?: string;
+}
+
+const {
+  name,
+  position = "Board Member",
+  image_url = "https://placecats.com/200/200",
+} = Astro.props;
+---
+
+<div class="flex flex-col">
+  <img src={image_url} class="border-6 rounded-3xl border-blue-500" />
+  <span class="font-jersey text-3xl mb-0 pb-0">{name}</span>
+  <span class="text-sm mt-0 pt-0">{position}</span>
+  <div></div>
+</div>
