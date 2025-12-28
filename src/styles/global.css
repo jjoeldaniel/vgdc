@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+.font-arcade {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.font-jersey {
+  font-family: 'Jersey 10', cursive;
+}
+
+.blinking-text {
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
