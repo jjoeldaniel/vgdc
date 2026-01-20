@@ -8,10 +8,6 @@
   font-family: 'Funnel Display', sans-serif;
 }
 
-.font-jersey {
-  font-family: 'Jersey 10', cursive;
-}
-
 .blinking-text {
   animation: blink 2s infinite;
 }
