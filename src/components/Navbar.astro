@@ -1,15 +1,26 @@
 <div class="flex flex-row place-content-between mx-8">
   <!-- logo -->
-  <a href="/">
+  <a href="/" class="group">
     <div class="flex items-center space-x-2">
       <div class="text-3xl animate-chomp">
-        <i class="fas fa-dice hover:text-yellow-300"></i>
+        <i
+          class="fas fa-dice duration-500 group-hover:rotate-180 group-hover:text-yellow-300"
+        ></i>
       </div>
       <span class="leading-tight font-bold">
-        VGDC<br /><span class="text-blue-500 text-xs">@CSUF</span>
+        <span class="font-arcade">VGDC</span>
+        <br />
+        <span
+          class="font-funnel text-blue-500 group-hover:text-blue-400 text-md italic"
+          >@CSUF
+        </span>
       </span>
     </div></a
   >
 
-  <div>dropdown</div>
+  <div class="grid place-content-center">
+    <!-- mobile -->
+    <i class="md:hidden fa-solid fa-bars text-xl"></i>
+    <!-- desktop -->
+  </div>
 </div>

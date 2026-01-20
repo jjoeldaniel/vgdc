@@ -16,18 +16,32 @@ const { title = "VGDC @ CSUF" } = Astro.props;
       src="https://kit.fontawesome.com/551a6cc3e9.js"
       crossorigin="anonymous"></script>
     <title>{title}</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Jersey+10&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Jersey+10&family=Press+Start+2P&family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="grid grid-rows-[auto_1fr_auto] min-h-screen my-4 w-full">
-    <header class="w-full max-w-4xl mx-auto">
-      <Navbar />
+  <body class="grid grid-rows-[auto_1fr_auto] min-h-screen bg-[#171719]">
+    <header
+      class="w-full grid place-content-center pt-3 pb-2 mx-auto text-white"
+    >
+      <div class="max-w-5xl w-screen">
+        <Navbar />
+      </div>
     </header>
 
-    <main class="grid place-content-center w-full max-w-4xl mx-auto">
+    <main class="flex flex-col w-full mx-auto bg-white">
       <slot />
     </main>
 
-    <footer class="grid place-content-center w-full max-w-4xl mx-auto">
-      <Footer />
+    <footer class="w-full grid place-content-center pb-3 mx-auto text-white">
+      <div class="max-w-5xl w-full">
+        <Footer />
+      </div>
     </footer>
   </body>
 </html>
