@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  content: string;
+}
+
+const { title, content } = Astro.props;
+---
+
+<label class="w-full">
+  <input class="peer/showLabel absolute scale-0" type="checkbox" />
+  <span
+    class="block max-h-14 md:max-w-xl max-w-xs overflow-hidden rounded-lg bg-slate-100 px-4 py-0 shadow-lg transition-all duration-300 peer-checked/showLabel:max-h-52"
+  >
+    <h3 class="flex md:text-center h-14 cursor-pointer items-center font-bold">
+      {title}
+    </h3>
+    <p class="mb-2">
+      {content}
+    </p>
+  </span>
+</label>

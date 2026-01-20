@@ -1,0 +1,32 @@
+---
+import FAQBox from "./FAQBox.astro";
+---
+
+<div
+  class="grid place-self-center w-full place-content-center grid-cols-1 md:grid-cols-2 pb-40 max-w-5xl"
+>
+  <div class="hidden md:flex flex-row group items-center space-x-2">
+    <div class="text-8xl animate-chomp">
+      <i
+        class="fas fa-dice duration-500 group-hover:rotate-180 group-hover:text-yellow-300"
+      ></i>
+    </div>
+    <span class="leading-tight font-bold">
+      <span class="font-arcade text-6xl">VGDC</span>
+      <br />
+      <span
+        class="font-funnel text-blue-500 group-hover:text-blue-400 text-3xl italic"
+        >@CSUF
+      </span>
+    </span>
+  </div>
+  <div class="space-y-8 grid place-content-center w-full">
+    <h3 class="text-4xl mb-6 text-center font-arcade">FAQ</h3>
+    <FAQBox title="How do I get involved?" content="Lorem ipsum" />
+    <FAQBox title="I've never made games before..." content="Lorem ipsum" />
+    <FAQBox
+      title="I've made a lot of games, how can VGDC help me?"
+      content="Lorem ipsum"
+    />
+  </div>
+</div>
