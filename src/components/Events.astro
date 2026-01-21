@@ -1,0 +1,122 @@
+---
+import ical from "node-ical";
+import { format, isFuture } from "date-fns";
+
+const runtime = Astro.locals.runtime;
+const CALENDAR_URL =
+  runtime?.env?.GCAL_SECRET_URL ?? import.meta.env.GCAL_SECRET_URL;
+
+const MAX_EVENTS = 3;
+
+let events = [];
+let error = null;
+
+if (!CALENDAR_URL) {
+  console.error("Missing GCAL_SECRET_URL environment variable.");
+  error = "Calendar configuration missing.";
+} else {
+  try {
+    const response = await fetch(CALENDAR_URL);
+    if (!response.ok) throw new Error("Failed to fetch calendar");
+
+    let body = await response.text();
+
+    body = body.replace(/UNTIL=(\d{8}T\d{6})(?!Z)/g, "UNTIL=$1Z");
+
+    const data = ical.sync.parseICS(body);
+
+    events = Object.values(data)
+      .filter((event) => event.type === "VEVENT")
+      .filter((event) => isFuture(new Date(event.start)))
+      .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime())
+      .slice(0, MAX_EVENTS);
+  } catch (e) {
+    console.error("Calendar Error:", e);
+    error = "Unable to load events at this time.";
+  }
+}
+
+const formatTimeRange = (start, end) => {
+  return `${format(new Date(start), "h:mm a")} - ${format(new Date(end), "h:mm a")}`;
+};
+---
+
+<section class="w-full max-w-5xl mx-auto py-6">
+  <div class="mb-8">
+    <h2
+      class="text-5xl md:text-8xl text-center font-funnel font-bold tracking-tight mb-2"
+    >
+      Events
+    </h2>
+    <a
+      href="#"
+      class="text-gray-500 hover:text-gray-700 text-sm flex mt-5 place-content-center md:place-content-end gap-1 transition-colors"
+    >
+      View more events
+      <span>&rarr;</span>
+    </a>
+  </div>
+
+  <div class="flex flex-col gap-6">
+    {
+      error && (
+        <p class="text-red-400 p-4 bg-red-900/20 rounded-lg border border-red-900">
+          {error}
+        </p>
+      )
+    }
+
+    {
+      !error && events.length === 0 && (
+        <p class="text-gray-500 text-3xl italic text-center">
+          No upcoming events scheduled.
+        </p>
+      )
+    }
+
+    {
+      events.map((event) => (
+        <article class="group relative flex flex-col md:flex-row bg-[#1a1a1a] border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 hover:bg-[#222] transition-all duration-300 shadow-lg">
+          <div class="w-full md:w-64 h-48 md:h-auto bg-linear-to-br from-indigo-900 to-purple-900 flex items-center justify-center shrink-0">
+            <span class="text-4xl">🎮</span>
+          </div>
+
+          <div class="flex-1 p-6 flex flex-col justify-between">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+              <div class="space-y-2">
+                <h3 class="text-2xl font-bold font-funnel text-white group-hover:text-blue-400 transition-colors">
+                  {event.summary}
+                </h3>
+
+                {event.location && (
+                  <p class="text-[#4ADE80] font-mono text-sm font-semibold tracking-wide">
+                    {event.location}
+                  </p>
+                )}
+
+                <p class="text-gray-400 text-sm line-clamp-2 md:line-clamp-3 mt-2 max-w-xl">
+                  {event.description}
+                </p>
+              </div>
+
+              <div class="text-left md:text-right shrink-0">
+                <div class="text-xl font-funnel font-semibold text-gray-200">
+                  {format(new Date(event.start), "MMMM do")}
+                </div>
+                <div class="text-sm text-gray-400 font-mono mt-1">
+                  {formatTimeRange(event.start, event.end)}
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 md:mt-0 md:absolute md:bottom-6 md:right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+              <span class="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-400/10 px-3 py-1 rounded-full">
+                Event Details
+              </span>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
