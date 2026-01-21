@@ -3,12 +3,7 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
-interface Props {
-  title?: string;
-  hasHero?: boolean;
-}
-
-const { title = "VGDC @ CSUF", hasHero = false } = Astro.props;
+const { title = "VGDC @ CSUF" } = Astro.props;
 ---
 
 <html lang="en">
@@ -17,20 +12,38 @@ const { title = "VGDC @ CSUF", hasHero = false } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <script src="https://kit.fontawesome.com/551a6cc3e9.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script
+      src="https://kit.fontawesome.com/551a6cc3e9.js"
+      crossorigin="anonymous"></script>
+    <title>{title}</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Press+Start+2P&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Jersey+10&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Jersey+10&family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Jersey+10&family=Press+Start+2P&family=Titan+One&display=swap" rel="stylesheet">
-    <title>{title}</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Jersey+10&family=Press+Start+2P&family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body class="flex flex-col space-y-8 items-center mb-6 mt-4 bg-[#111827] text-white">
-    <Navbar {hasHero} />
-    <slot />
-    <Footer/>
+  <body class="grid grid-rows-[auto_1fr_auto] min-h-screen bg-[#171719]">
+    <header
+      class="w-full grid place-content-center pt-3 pb-2 mx-auto text-white"
+    >
+      <div class="max-w-5xl w-screen">
+        <Navbar />
+      </div>
+    </header>
+
+    <main
+      class="flex flex-col w-full mx-auto bg-linear-to-b from-zinc-100 to-slate-100"
+    >
+      <slot />
+    </main>
+
+    <footer class="w-full grid place-content-center pb-3 mx-auto text-white">
+      <div class="max-w-5xl w-full">
+        <Footer />
+      </div>
+    </footer>
   </body>
 </html>

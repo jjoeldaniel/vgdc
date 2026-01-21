@@ -1,41 +1,32 @@
-<!-- TODO: Replace hover with button toggle -->
-<ul class="space-y-4">
-  <li class="w-full pb-2 group border-b-2 border-b-white">
-    <div class="flex flex-row justify-between align-middle text-lg w-full">
-      <span class="font-funnel max-w-lg">How do I get involved?</span>
-      <i class="fa-solid fa-angle-down place-self-center"></i>
+---
+import FAQBox from "./FAQBox.astro";
+---
+
+<div
+  class="grid place-self-center w-full place-content-center grid-cols-1 md:grid-cols-2 pt-28 pb-40 max-w-5xl"
+>
+  <div class="hidden md:flex self-center flex-row w-fit h-fit group items-center space-x-2">
+    <div class="text-8xl animate-chomp">
+      <i
+        class="fas fa-dice duration-500 group-hover:rotate-180 group-hover:text-red-500"
+      ></i>
     </div>
-    <p class="max-w-md mt-2 hidden group-hover:block">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-    </p>
-  </li>
-  <li class="w-full pb-2 group border-b-2 border-b-white">
-    <div class="flex flex-row justify-between align-middle text-lg w-full">
-      <span class="font-funnel">I've never made games before... </span>
-      <i class="fa-solid fa-angle-down place-self-center"></i>
-    </div>
-    <p class="max-w-md mt-2 hidden group-hover:block">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-    </p>
-  </li>
-  <li class="w-full pb-2 group border-b-2 border-b-white">
-    <div class="flex flex-row justify-between align-middle text-lg w-full">
-      <span class="font-funnel"
-        >I've made a lot of games, how can VGDC help me?</span
-      >
-      <i class="fa-solid fa-angle-down place-self-center"></i>
-    </div>
-    <p class="max-w-md mt-2 hidden group-hover:block">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-    </p>
-  </li>
-</ul>
+    <span class="leading-tight font-bold">
+      <span class="font-arcade text-6xl">VGDC</span>
+      <br />
+      <span
+        class="font-funnel text-blue-500 group-hover:text-blue-400 text-3xl italic"
+        >@CSUF
+      </span>
+    </span>
+  </div>
+  <div class="space-y-8 grid place-content-center w-full">
+    <h3 class="text-4xl mb-6 text-center font-funnel font-bold">FAQ</h3>
+    <FAQBox title="How do I get involved?" content="Attend our weekly Friday meetings to meet the board and other members! Everyone is welcome to join our game development teams, which are all led by fellow club members." />
+    <FAQBox title="Do I need experience?" content="No worries! We host workshops that are completely beginner-friendly. We also have game development teams dedicated to learning together, where members support and teach each other." />
+    <FAQBox
+      title="Is this club only for beginners?"
+      content="VGDC has teams for all skill levels, ranging from beginners to seasoned developers. Our weekly meetings vary from networking with guest speakers to having roundtable discussions with other members."
+    />
+  </div>
+</div>
