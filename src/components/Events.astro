@@ -6,7 +6,7 @@ const runtime = Astro.locals.runtime;
 const CALENDAR_URL =
   runtime?.env?.GCAL_SECRET_URL ?? import.meta.env.GCAL_SECRET_URL;
 
-const MAX_EVENTS = 3;
+const { maxEvents } = Astro.props;
 
 let events = [];
 let error = null;
@@ -29,7 +29,7 @@ if (!CALENDAR_URL) {
       .filter((event) => event.type === "VEVENT")
       .filter((event) => isFuture(new Date(event.start)))
       .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime())
-      .slice(0, MAX_EVENTS);
+      .slice(0, maxEvents);
   } catch (e) {
     console.error("Calendar Error:", e);
     error = "Unable to load events at this time.";
