@@ -1,10 +1,19 @@
 ---
 const { summary, location, description, start, end } = Astro.props;
 import { format } from "date-fns";
+import { formatInTimeZone } from "date-fns-tz";
 
-const formatTimeRange = (start, end) => {
-  return `${format(new Date(start), "h:mm a")} - ${format(new Date(end), "h:mm a")}`;
-};
+const TIMEZONE = "America/Los_Angeles";
+
+function formatTimeRange(start, end) {
+  const startTime = formatInTimeZone(new Date(start), TIMEZONE, "h:mm a");
+  const endTime = formatInTimeZone(new Date(end), TIMEZONE, "h:mm a");
+  return `${startTime} - ${endTime}`;
+}
+
+function formatDate(date) {
+  return formatInTimeZone(new Date(date), TIMEZONE, "MMMM do");
+}
 ---
 
 <article
