@@ -5,7 +5,7 @@
       "dependencies": {
         "@astrojs/cloudflare": "^12.6.12",
         "@tailwindcss/vite": "^4.1.18",
-        "astro": "^5.16.6",
+        "astro": "^5.16.11",
         "prettier-plugin-astro": "^0.14.1",
         "tailwindcss": "^4.1.18",
       },
