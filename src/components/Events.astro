@@ -28,7 +28,7 @@ if (!CALENDAR_URL) {
 
     events = Object.values(data)
       .filter((event) => event.type === "VEVENT")
-      .filter((event) => isFuture(new Date(event.start)))
+      .filter((event) => isFuture(new Date(event.end)))
       .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime())
       .slice(0, maxEvents);
   } catch (e) {
